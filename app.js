@@ -13,7 +13,10 @@ const opts = Object.assign({
 });
 const logger = require('pino')(opts);
 const {calculateResponse, getUserInfo} = require('./lib/utils.js')(logger);
-const port = process.env.HTTP_PORT || 3000;
+const port = process.env.PORT || 3337;
+app.listen(port, () => {
+  logger.info(`Example jambonz app listening at http://localhost:${port}`);
+});
 const routes = require('./lib/routes');
 app.locals = {
   ...app.locals,
